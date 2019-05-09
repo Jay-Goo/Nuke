@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2019 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2018 Alexander Grebenyuk (github.com/kean).
 
 import XCTest
 @testable import Nuke
@@ -487,15 +487,12 @@ class ImagePipelineDeduplicationTests: XCTestCase {
 /// Helps with counting processors.
 private final class ProcessorFactory {
     var numberOfProcessorsApplied: Int = 0
-    let lock = NSLock()
 
     private final class Processor: MockImageProcessor {
         var factory: ProcessorFactory!
 
         override func process(image: Image, context: ImageProcessingContext) -> Image? {
-            factory.lock.sync {
-                factory.numberOfProcessorsApplied += 1
-            }
+            factory.numberOfProcessorsApplied += 1
             return super.process(image: image, context: context)
         }
     }

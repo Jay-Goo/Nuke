@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2019 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2018 Alexander Grebenyuk (github.com/kean).
 
 import XCTest
 import Security
@@ -54,6 +54,7 @@ class DataCacheTests: XCTestCase {
 
     // MARK: Default Key Encoder
 
+    #if swift(>=4.2)
     func testDefaultKeyEncoder() {
         let cache = try! DataCache(name: UUID().uuidString)
         let filename = cache.filename(for: "http://test.com")
@@ -63,6 +64,7 @@ class DataCacheTests: XCTestCase {
     func testSHA1() {
         XCTAssertEqual("http://test.com".sha1, "50334ee0b51600df6397ce93ceed4728c37fee4e")
     }
+    #endif
 
     // MARK: Add
 

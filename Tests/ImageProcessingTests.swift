@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2019 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2018 Alexander Grebenyuk (github.com/kean).
 
 import XCTest
 @testable import Nuke
@@ -19,7 +19,7 @@ class ImageProcessingTests: XCTestCase {
         mockDataLoader = MockDataLoader()
         pipeline = ImagePipeline {
             $0.dataLoader = mockDataLoader
-            return
+            return // !swift(>=4.1)
         }
     }
 

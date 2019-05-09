@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2019 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2018 Alexander Grebenyuk (github.com/kean).
 
 @testable import Nuke
 import XCTest
@@ -190,10 +190,10 @@ class ThreadSafetyTests: XCTestCase {
 
         #if os(iOS) || os(tvOS)
         ops.append {
-            NotificationCenter.default.post(name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name.UIApplicationDidReceiveMemoryWarning, object: nil)
         }
         ops.append {
-            NotificationCenter.default.post(name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         }
         #endif
 

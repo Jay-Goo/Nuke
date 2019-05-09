@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2019 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2018 Alexander Grebenyuk (github.com/kean).
 
 import XCTest
 @testable import Nuke
@@ -395,7 +395,7 @@ class ImagePipelineErrorHandlingTests: XCTestCase {
         // Given
         let pipeline = ImagePipeline {
             $0.dataLoader = MockDataLoader()
-            return
+            return // !swift(>=4.1)
         }
 
         let request = Test.request.processed(with: MockFailingProcessor())
